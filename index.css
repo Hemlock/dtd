@@ -1,0 +1,38 @@
+body {
+    background-color: silver;
+}
+
+.container {
+    margin: 20px auto;
+    width: 800px;
+
+    background-color: #eee;
+}
+
+.container .section {
+    display: none;
+    background-color: white;
+    width: 500px;
+    padding: 20px;
+}
+
+.services .services {
+    display: block
+}
+
+.testimonials .testimonials {
+    display: block
+}
+
+.contacts .contacts {
+    display: block
+}
+
+.links {
+    width: 100%;
+}
+
+.links td {
+    width: 33%;
+}
+
