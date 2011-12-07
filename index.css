@@ -1,31 +1,62 @@
 body {
-    background-color: silver;
+    background-color: black;
+    font-family: helvetica, arial, sans-serif;
+}
+
+h1 {
+    color: white;
+    font-size: 36px;
+    text-shadow: 2px 2px 2px #666;
+    letter-spacing: -0.11em;
+    margin: 20px;
+}
+
+h2, a {
+    font-weight: normal;
+    letter-spacing: -0.1em;
+    text-shadow: 1px 1px 1px #ddd;
 }
 
 .container {
     margin: 20px auto;
     width: 800px;
 
-    background-color: #eee;
+    background: url('background.jpg');
+    border: 8px solid #999;
 }
 
 .container .section {
     display: none;
+    opacity: 0;
     background-color: white;
     width: 500px;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
+    margin: 0 20px;
+    border-radius: 25px 25px 0 0;
 }
 
-.services .services {
-    display: block
+.services div.services,
+.testimonials div.testimonials,
+.contacts div.contacts {
+    display: block;
+    opacity: .9;
 }
 
-.testimonials .testimonials {
-    display: block
+.container table {
+    border-spacing: 0;
+    padding:  0 20px;
 }
 
-.contacts .contacts {
-    display: block
+.container td {
+    background-color: white;
+    opacity: .6;
+}
+
+
+.services td.services,
+.testimonials td.testimonials,
+.contacts td.contacts {
+    opacity: .9;
 }
 
 .links {
@@ -34,5 +65,13 @@ body {
 
 .links td {
     width: 33%;
+    text-align: center;
+    padding: 8px;
+}
+
+.links td a {
+    text-decoration: none;
+    color: #000;
+    font-size: 22px;
 }
 
