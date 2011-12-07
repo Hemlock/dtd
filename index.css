@@ -1,13 +1,13 @@
 body {
-    background-color: black;
+    background: url('texture.jpg');
     font-family: helvetica, arial, sans-serif;
 }
 
 h1 {
     color: white;
-    font-size: 36px;
+    font-size: 56px;
     text-shadow: 2px 2px 2px #666;
-    letter-spacing: -0.11em;
+    letter-spacing: -0.1em;
     margin: 20px;
 }
 
@@ -17,61 +17,95 @@ h2, a {
     text-shadow: 1px 1px 1px #ddd;
 }
 
-.container {
-    margin: 20px auto;
+#main {
+    margin: 40px auto;
     width: 800px;
+    height: 600px;
+    position: relative;
 
     background: url('background.jpg');
     border: 8px solid #999;
+    box-shadow: 0 0 200px #000;
 }
 
-.container .section {
-    display: none;
-    opacity: 0;
+.section {
+    position: absolute;
+    bottom: 62px;
+    line-height: 1.2em;
+    border: 0;
+    margin: 0;
     background-color: white;
-    width: 500px;
+    width: 400px;
     padding: 10px 20px 20px 20px;
-    margin: 0 20px;
     border-radius: 25px 25px 0 0;
+    box-shadow: 0 0 20px #333;
+
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
 }
 
-.services div.services,
-.testimonials div.testimonials,
-.contacts div.contacts {
-    display: block;
-    opacity: .9;
+#services {
+    left: 20px;
 }
 
-.container table {
+#samples {
+    left: 190px;
+}
+
+#contacts {
+    right: 20px;
+}
+
+
+#links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     border-spacing: 0;
-    padding:  0 20px;
+    width: 100%;
+    border: 0;
+    margin: 0;
 }
 
-.container td {
+#links div {
     background-color: white;
     opacity: .6;
-}
-
-
-.services td.services,
-.testimonials td.testimonials,
-.contacts td.contacts {
-    opacity: .9;
-}
-
-.links {
-    width: 100%;
-}
-
-.links td {
-    width: 33%;
+    height: 26px;
+    width: 253px;
     text-align: center;
-    padding: 8px;
+    padding: 18px 0;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    float: left;
+
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
 }
 
-.links td a {
-    text-decoration: none;
+#links div:first-child {
+    width: 20px;
+}
+
+#links div:last-child  {
+    width: 21px;
+}
+
+#main.services #links .services,
+#main.samples #links .samples,
+#main.contacts #links .contacts{
+    opacity: .9;
     color: #000;
-    font-size: 22px;
+}
+
+#main.services #services,
+#main.samples #samples,
+#main.contacts #contacts {
+    opacity: .9;
 }
 
