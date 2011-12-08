@@ -1,12 +1,12 @@
 body {
-    background: url('texture.jpg');
+    background: url('texture.png');
     font-family: helvetica, arial, sans-serif;
 }
 
 h1 {
     color: white;
     font-size: 56px;
-    text-shadow: 2px 2px 2px #666;
+    text-shadow: 2px 2px 2px #333;
     letter-spacing: -0.1em;
     margin: 20px;
 }
@@ -39,8 +39,10 @@ h2, a {
     padding: 10px 20px 20px 20px;
     border-radius: 25px 25px 0 0;
     box-shadow: 0 0 20px #333;
+    z-index: 1;
 
     opacity: 0;
+    filter: alpha(opacity = 0);
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
@@ -51,14 +53,13 @@ h2, a {
     left: 20px;
 }
 
-#samples {
+#photos {
     left: 190px;
 }
 
-#contacts {
+#contact {
     right: 20px;
 }
-
 
 #links {
     position: absolute;
@@ -68,11 +69,12 @@ h2, a {
     width: 100%;
     border: 0;
     margin: 0;
+    z-index: 3;
+
 }
 
 #links div {
     background-color: white;
-    opacity: .6;
     height: 26px;
     width: 253px;
     text-align: center;
@@ -82,30 +84,94 @@ h2, a {
     cursor: pointer;
     float: left;
 
+    opacity: .6;
+    filter: alpha(opacity = 60);
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
     -ms-transition: opacity .5s ease-in-out;
 }
 
-#links div:first-child {
+#links div.first {
     width: 20px;
 }
 
-#links div:last-child  {
+#links div.last {
     width: 21px;
 }
 
 #main.services #links .services,
-#main.samples #links .samples,
-#main.contacts #links .contacts{
+#main.photos #links .photos,
+#main.contact #links .contact {
+
     opacity: .9;
+    filter: alpha(opacity = 90);
     color: #000;
 }
 
 #main.services #services,
-#main.samples #samples,
-#main.contacts #contacts {
+#main.photos #photos,
+#main.contact #contact {
+    z-index: 2;
     opacity: .9;
+    filter: alpha(opacity = 90);
 }
 
+.photo {
+    text-align: center;
+    float: left;
+    width: 50%;
+}
+
+.photo img {
+    height: 100px;
+}
+
+.photo .caption {
+    display: none;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+}
+
+#mask.visible {
+    z-index: 1000;
+    opacity: .8;
+    filter: alpha(opacity = 80);
+    
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+}
+
+.focused-photo {
+    position: fixed;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0;
+    margin: 50px auto;
+    padding: 10px 10px 40px 10px;
+    background-color: white;
+
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+}
+
+.zoom {
+    opacity: 1;
+    z-index: 1001;
+}
