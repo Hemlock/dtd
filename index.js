@@ -6,8 +6,8 @@ DTD = {
     },
 
     setupLinks: function() {
-        var links = document.getElementById('links');
-        links.onmouseover = function(event) {
+        var main = this.getMain();
+        this.getLinks().onmouseover = function(event) {
             event = event || window.event;
             var cls = event.target.className;
             switch (cls) {
@@ -15,44 +15,67 @@ DTD = {
                 case 'last':
                     break;
                 default:
-                    document.getElementById('main').className = cls;
+                    main.className = cls;
             }
         }
     },
+
     setupPhotos: function() {
-        var photos = document.getElementById('photos');
         document.onkeydown = function(event) {
             event = event || window.event;
             if (event.keyCode == 27) {
                 DTD.hideLightBox();
             }
-        }
+        };
 
-        document.getElementById('mask').onclick = DTD.hideLightBox();
-        
-        photos.onclick = function(event) {
+        var mask = this.getMask();
+        var focused = this.getFocusedPhoto();
+        focused.onclick = function() {
+            DTD.hideLightBox();
+        };
+        this.getPhotos().onclick = function(event) {
             event = event || window.event;
             var target = event.target;
             if (target.tagName == 'IMG') {
-                document.getElementById('mask').className="visible";
+                while (focused.firstChild) {
+                    focused.removeChild(focused.firstChild);
+                }
 
-                DTD.focused = target.parentNode.cloneNode(true);
-                document.body.appendChild(DTD.focused)
-                DTD.focused.className = 'focused-photo'
-                setTimeout(function() {
-                    DTD.focused.className += ' zoom';
-                }, 10);
+                var photo = target.parentNode.cloneNode(true);
+                focused.appendChild(photo);
+                photo.style.left = ((focused.offsetWidth>>1) - (photo.offsetWidth>>1)) + 'px';
+                photo.style.top = ((focused.offsetHeight>>1) - (photo.offsetHeight>>1)) + 'px';
+                mask.className = 'visible';
+                focused.className = 'focused-photo visible';
             }
-        }
+        };
     },
 
     hideLightBox: function() {
-        if (DTD.focused) {
-            document.getElementById('mask').className="";
-            DTD.focused.className = 'focused-photo'
-        }
+        this.getMask().className = 'hidden';
+        this.getFocusedPhoto().className = 'hidden'
+    },
+
+    getMain: function() {
+        return document.getElementById('main');
+    },
+
+    getLinks: function() {
+        return document.getElementById('links');
+    },
+
+    getPhotos: function() {
+        return document.getElementById('photos');
+    },
+
+    getMask: function() {
+        return document.getElementById('mask');
+    },
+
+    getFocusedPhoto: function() {
+        return document.getElementById('focused-photo');
     }
-}
+};
 
 
 window.onload = DTD.setup
