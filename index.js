@@ -1,15 +1,17 @@
 DTD = {
     focused: null,
     setup: function() {
-        DTD.setupLinks();
-        DTD.setupPhotos()
+        this.setupLinks();
+        this.setupPhotos();
+        this.getMain().className = 'about';
     },
 
     setupLinks: function() {
         var main = this.getMain();
-        this.getLinks().onmouseover = function(event) {
+        var links = this.getLinks()
+        links.onclick = links.onmouseover = function(event) {
             event = event || window.event;
-            var cls = event.target.className;
+            var cls = (event.target || event.srcElement).className;
             switch (cls) {
                 case 'first':
                 case 'last':
@@ -30,12 +32,13 @@ DTD = {
 
         var mask = this.getMask();
         var focused = this.getFocusedPhoto();
-        focused.onclick = function() {
+        mask.onclick = focused.onclick = function() {
             DTD.hideLightBox();
         };
         this.getPhotos().onclick = function(event) {
             event = event || window.event;
-            var target = event.target;
+            var target = event.target || event.srcElement;
+
             if (target.tagName == 'IMG') {
                 while (focused.firstChild) {
                     focused.removeChild(focused.firstChild);
@@ -47,6 +50,7 @@ DTD = {
                 photo.style.top = ((focused.offsetHeight>>1) - (photo.offsetHeight>>1)) + 'px';
                 mask.className = 'visible';
                 focused.className = 'focused-photo visible';
+
             }
         };
     },
@@ -78,4 +82,6 @@ DTD = {
 };
 
 
-window.onload = DTD.setup
+window.onload = function() {
+    DTD.setup();
+}
