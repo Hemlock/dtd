@@ -11,14 +11,14 @@ h1 {
     margin: 20px;
 }
 
-h2, a {
+h2 {
     font-weight: normal;
     letter-spacing: -0.1em;
     text-shadow: 1px 1px 1px #ddd;
 }
 
 h3 {
-    color: #cccc00;
+    color: #99cc00;
     text-shadow: 1px 1px 1px #000;
     text-align: right;
     margin: -10px 50px 0 0;
@@ -27,30 +27,43 @@ h3 {
 #main {
     margin: 40px auto;
     width: 800px;
-    height: 600px;
+    height: 650px;
     position: relative;
     top: 0;
 
+    border-radius: 35px 35px 5px 5px;
     background: url('background.jpg');
-    border: 8px solid #999;
+    border: 1px solid #000;
     box-shadow: 0 0 400px #000;
+    overflow: hidden;
 }
 
 .section {
     position: absolute;
-    bottom: 62px;
+    bottom: -500px;
     line-height: 1.2em;
     border: 0;
     margin: 0;
     background-color: white;
     width: 400px;
     padding: 10px 20px 20px 20px;
+    border-bottom: solid white 85px;
     border-radius: 25px 25px 0 0;
     box-shadow: 0 0 20px #333;
     z-index: 1;
 
-    opacity: 0;
-    transition: opacity .3s linear;
+    /*opacity: 0;*/
+    transition: bottom .3s ease-in;
+}
+
+.email {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.email span {
+    display: none;
 }
 
 #about {
@@ -67,29 +80,34 @@ h3 {
 
 #links {
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     left: 0;
     border-spacing: 0;
     width: 100%;
-    border: 0;
-    margin: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
     z-index: 3;
-
+    overflow:  hidden;
+    box-shadow: 0 0 10px #333;
+    opacity: .9;
 }
 
 #links div {
-    background-color: white;
+    background-color: #ddd;
     height: 26px;
     width: 253px;
     text-align: center;
     padding: 18px 0;
     color: #333;
     font-size: 22px;
-    cursor: pointer;
     float: left;
 
-    opacity: .6;
-    transition: opacity .3s linear;
+    transition: background-color .3s linear,
+        color .3s linear;
+}
+
+#links div span {
+    cursor: pointer;
 }
 
 #links div.first {
@@ -103,15 +121,16 @@ h3 {
 #main.about #links .about,
 #main.photos #links .photos,
 #main.services #links .services {
-    opacity: .9;
-    color: #000;
+    color: white;
+    background-color: #336600;
 }
 
 #main.about #about,
 #main.photos #photos,
 #main.services #services {
     z-index: 2;
-    opacity: .9;
+    bottom: 0;
+    transition: bottom .3s ease-in;
 }
 
 .photo {
@@ -173,7 +192,8 @@ h3 {
 .hidden {
     opacity: 0;
     top: -100% !important;
-    transition: opacity .3s linear, top 0s linear .3s;
+    transition: opacity .3s linear,
+        top 0s linear .3s;
 }
 
 .visible {
@@ -183,5 +203,5 @@ h3 {
 }
 
 #mask.visible {
-    opacity: .6;
+    opacity: .7;
 }
