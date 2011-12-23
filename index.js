@@ -2,8 +2,7 @@ DTD = {
     address: [100, 111, 117, 103, 64, 100, 111, 117, 103, 116, 97, 121, 108, 111, 114, 100, 101, 99, 111, 114, 97, 116, 105, 110, 103, 46, 99, 111, 109],
     setup: function() {
         this.setupLinks();
-        this.setupPhotos();
-        this.setupEmail();
+        this.setupContacts();
         this.getMain().className = 'about';
     },
 
@@ -26,58 +25,21 @@ DTD = {
         }
     },
 
-    setupPhotos: function() {
-        document.onkeydown = function(event) {
-            event = event || window.event;
-            if (event.keyCode == 27) {
-                DTD.hideLightBox();
-            }
-        };
-
-        var mask = this.getMask();
-        var focused = this.getFocusedPhoto();
-        mask.onclick = focused.onclick = function() {
-            DTD.hideLightBox();
-        };
-        this.getPhotos().onclick = function(event) {
-            event = event || window.event;
-            var target = event.target || event.srcElement;
-
-            if (target.tagName == 'IMG') {
-                while (focused.firstChild) {
-                    focused.removeChild(focused.firstChild);
-                }
-
-                var photo = target.parentNode.cloneNode(true);
-                focused.appendChild(photo);
-                photo.style.left = ((focused.offsetWidth >> 1) - (photo.offsetWidth >> 1)) + 'px';
-                photo.style.top = ((focused.offsetHeight >> 1) - (photo.offsetHeight >> 1)) + 'px';
-                mask.className = 'visible';
-                focused.className = 'focused-photo visible';
-
-            }
-        };
-    },
-
-    hideLightBox: function() {
-        this.getMask().className = 'hidden';
-        this.getFocusedPhoto().className = 'hidden'
-    },
-
-    setupEmail: function() {
-        var html = '';
+    setupContacts: function() {
+        var html = '<h4>Contact</h4>' + 
+								'Fax/Phone: 616-634-2161' +
+								'<div class="email" onclick="DTD.openEmail();">Email: ';
+								
         for (var i=0, c; c = this.address[i]; i++) {
-            html += '&#' + c + ';<span>' + randomChars() + '</span>';
+            html += '<span class="e">&#' + c + ';</span><span class="d">' + randomChars() + '</span>';
         }
-
-        var emails = this.getEmailNodes();
-        for (var i = 0, email; email = emails[i]; i++) {
-            email.innerHTML = html;
-            email.onclick = function() {
-                DTD.openEmail();
-            }
-        }
-
+        
+        html += '</div>';
+				var sections = this.getSections();
+				for (var i=0, section; section = sections[i]; i++) {
+					section.innerHTML += html;
+				}
+				
         function randomChars() {
             var i = Math.floor(Math.random() * 10);
             var chars = []
@@ -97,13 +59,14 @@ DTD = {
         location.href = 'mailto: ' + str;
     },
 
-    simpleSelect: function(selector) {
-        if (document.querySelectorAll) {
-            return this.toArray(document.querySelectorAll(selector));
+    simpleSelect: function(selector, parent) {
+        parent = parent || document;
+        if (parent.querySelectorAll) {
+            return this.toArray(parent.querySelectorAll(selector));
 
         } else {
             selector = selector.split('.');
-            var elements = document.getElemenstByTagName(selector[0] || '*');
+            var elements = parent.getElemenstByTagName(selector[0] || '*');
             if (!selector[1]) {
                 return this.toArray(elements);
             }
@@ -145,14 +108,10 @@ DTD = {
         return document.getElementById('photos');
     },
 
-    getMask: function() {
-        return document.getElementById('mask');
+    getSections: function() {
+        return this.simpleSelect('.section');
     },
-
-    getFocusedPhoto: function() {
-        return document.getElementById('focused-photo');
-    },
-
+		
     getEmailNodes: function() {
         return this.simpleSelect('.email');
     }
@@ -160,5 +119,6 @@ DTD = {
 
 
 window.onload = function() {
+    DTD.Photos.setup();
     DTD.setup();
 }
