@@ -27,7 +27,7 @@ DTD = {
 
     setupContacts: function() {
         var html = '<h4>Contact</h4>' + 
-								'Fax/Phone: 616-634-2161' +
+								'Phone: 616.634.2161' +
 								'<div class="email" onclick="DTD.openEmail();">Email: ';
 								
         for (var i=0, c; c = this.address[i]; i++) {

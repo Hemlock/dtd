@@ -19,7 +19,8 @@ DTD.Photos = {
 
         var mask = this.getMask();
         var focused = this.getFocusedPhoto();
-        mask.onclick = focused.onclick = function() {
+        var close = this.getCloseButton();
+        close.onclick = function() {
             DTD.Photos.hideLightBox();
         };
 
@@ -28,11 +29,12 @@ DTD.Photos = {
             var target = event.target || event.srcElement;
 
             if (target.tagName == 'IMG') {
-                while (focused.firstChild) {
-                    focused.removeChild(focused.firstChild);
+                var photo = DTD.simpleSelect('.photo', focused)[0];
+                if (photo) {
+                    focused.removeChild(photo);
                 }
 
-                var photo = target.parentNode.cloneNode(true);
+                photo = target.parentNode.cloneNode(true);
                 var img = DTD.simpleSelect('img', photo)[0];
                 img.src = img.src.replace(/-thumb/, '');
 
@@ -41,6 +43,11 @@ DTD.Photos = {
                 photo.style.top = ((focused.offsetHeight >> 1) - (photo.offsetHeight >> 1)) + 'px';
                 mask.className = 'visible';
                 focused.className = 'focused-photo visible';
+
+
+                close.style.top = photo.style.top;
+                close.style.left = (parseInt(photo.style.left ,10) + photo.offsetWidth) + 'px';
+
 
             }
         };
@@ -57,6 +64,10 @@ DTD.Photos = {
 
     getFocusedPhoto: function() {
         return document.getElementById('focused-photo');
+    },
+
+    getCloseButton: function() {
+        return document.getElementById('close-button');
     },
 
     files: [{

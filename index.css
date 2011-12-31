@@ -188,6 +188,21 @@ h3 {
     position: absolute;
 }
 
+#close-button {
+    z-index: 10;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-image: url('close.png');
+    margin-top: -16px;
+    margin-left: -32px;
+    cursor: pointer;
+}
+
+#focused-photo .photo {
+    cursor: default;
+}
+
 #focused-photo .photo img {
     width: 800px;
     height: 600px;
