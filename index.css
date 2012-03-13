@@ -45,7 +45,7 @@ h3 {
 
 .section {
     position: absolute;
-    bottom: -500px;
+    bottom: -700px;
     line-height: 1.2em;
     border: 0;
     margin: 0;
@@ -138,6 +138,34 @@ h3 {
     transition: bottom .3s ease-in;
 }
 
+#photos .scroller {
+    height: 300px;
+    width: 400px;
+    overflow: auto;
+    position: relative;
+    clear: both;
+}
+
+#photos .scroller-top-fade {
+    position: relative;
+    width: 382px;
+    height: 25px;
+    margin-bottom: -25px;
+    z-index: 2;
+    background: linear-gradient(top, rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
+
+}
+
+#photos .scroller-bottom-fade {
+    position: relative;
+    width: 382px;
+    height: 25px;
+    margin-top: -25px;
+    z-index: 2;
+    background: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255,255,255,255));
+
+}
+
 .photo {
     text-align: center;
     float: left;
@@ -147,8 +175,6 @@ h3 {
 }
 
 .photo img {
-    height: 100px;
-    whidth: 133px;
     border:  1px solid black;
 }
 
@@ -178,14 +204,19 @@ h3 {
 }
 
 #focused-photo .photo {
-    width: 800px;
-    height: 600px;
+    width: 400px;
+    height: 533px;
     padding: 10px 10px 50px 10px;
     border: 1px solid #333;;
     background-color: white;
     box-shadow: 0 0 200px #000;
     opacity: 1;
     position: absolute;
+}
+
+#focused-photo .landscape {
+    width: 800px;
+    height: 600px;
 }
 
 #close-button {
@@ -204,8 +235,8 @@ h3 {
 }
 
 #focused-photo .photo img {
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
 }
 
 #focused-photo .photo .caption {

@@ -8,7 +8,7 @@ DTD = {
 
     setupLinks: function() {
         var main = this.getMain();
-        var links = this.getLinks()
+        var links = this.getLinks();
         links.onclick = links.onmouseover = function(event) {
             event = event || window.event;
             var cls = (event.target || event.srcElement).parentNode.className;
@@ -26,7 +26,7 @@ DTD = {
     },
 
     setupContacts: function() {
-        var html = '<h4>Contact</h4>' + 
+        var html = '<h4 style="clear:both;">Contact</h4>' +
 								'Phone: 616.634.2161' +
 								'<div class="email" onclick="DTD.openEmail();">Email: ';
 								
@@ -42,7 +42,7 @@ DTD = {
 				
         function randomChars() {
             var i = Math.floor(Math.random() * 10);
-            var chars = []
+            var chars = [];
             while (i--) {
                 chars.push('&#' + (Math.floor(Math.random() * 26) + 97) + ';');
             }
@@ -121,4 +121,4 @@ DTD = {
 window.onload = function() {
     DTD.Photos.setup();
     DTD.setup();
-}
+};

@@ -1,12 +1,14 @@
 DTD.Photos = {
     setup: function() {
-        var html = [];
+        var html = ['<div class="scroller-top-fade"></div><div class="scroller">'];
         for (var i=0, file; file = this.files[i]; i++) {
-            html.push('<div class="photo">',
+            html.push('<div class="photo ',
+                    file.landscape === false ? '' : 'landscape',  '">',
                 '<img src="photos/', file.name, '-thumb.jpg" />',
                 '<div class="caption">', file.caption, '</div>',
             '</div>');
         }
+        html.push('</div><div class="scroller-bottom-fade"></div>');
 
         DTD.getPhotos().innerHTML += html.join('');
 
@@ -82,5 +84,16 @@ DTD.Photos = {
     }, {
         name: 'dining',
         caption: 'Eat and be merry.'
+    }, {
+        name: 'draft-beams',
+        caption: 'Details, details, details.'
+    }, {
+        name: 'draft-door',
+        caption: 'Elegant door',
+        landscape: false
+    }, {
+        name: 'draft-steps',
+        caption: 'Grand stair case.',
+        landscape: false
     }]
 };
