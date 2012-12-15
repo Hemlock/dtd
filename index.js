@@ -1,6 +1,3 @@
-// TODO: scaling doesn't work right for a tall narrow window
-// TODO: more images
-
 var DTD = (function() {
 	function randomChars() {
 		var i = Math.floor(Math.random() * 10);
@@ -24,11 +21,16 @@ var DTD = (function() {
 		address: [100, 111, 117, 103, 64, 100, 111, 117, 103, 116, 97, 121, 108, 111, 114, 100, 101, 99, 111, 114, 97, 116, 105, 110, 103, 46, 99, 111, 109],
 		phone: [54, 49, 54, 46, 54, 51, 52, 46, 50, 49, 54, 49],
 		images: [
-			'6827737202_770cb00307_b.jpg',
-			'6827748384_e782f1e094_b.jpg',
-			'6827749728_28d4e0c9db_b.jpg', 
-			'6827751832_255db79cbe_b.jpg',
-			'6973851597_58b29689df_b.jpg'
+            "6827737202_770cb00307_b.jpg",
+            "6827748384_e782f1e094_b.jpg",
+            "6827749728_28d4e0c9db_b.jpg",
+            "6827751832_255db79cbe_b.jpg",
+            "6973851597_58b29689df_b.jpg",
+            "IMG_0830.JPG",
+            "IMG_0831.JPG",
+            "IMG_0832.JPG",
+            "IMG_0835.JPG",
+            "IMG_0836.JPG"
 		],
 		
 		on: function(target, event, handler, scope) {
@@ -44,10 +46,22 @@ var DTD = (function() {
 		},
 		
 		init: function() {
+            DTD.shuffle();
 			DTD.setupContacts();
 			DTD.renderImages();
 			DTD.setupAnimations();
 		},
+
+        shuffle: function() {
+            var images = this.images;
+            var i = images.length;
+            while ( --i ) {
+                var j = Math.floor( Math.random() * ( i + 1 ) );
+                var temp = images[i];
+                images[i] = images[j];
+                images[j] = temp;
+            }
+        },
 		
 		setupContacts: function() {
 			var container = document.getElementById('contact');
@@ -165,7 +179,6 @@ var DTD = (function() {
 				}
 				
 				style.left = ((i-1) * width) + 'px';
-				//style.zIndex = i;
 			}	
 		}
 		

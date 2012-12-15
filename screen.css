@@ -42,6 +42,8 @@ html, body {
 	color: black;
 	font-size: 1.2em;
 	font-weight: bold;
+    box-shadow: 0 0 7px 3px rgba(30,30,30,0.7);
+    outline: none;
 }
 
 #left:hover, #right:hover {
@@ -84,8 +86,9 @@ html, body {
 	background-color: #eee;
 	padding: 20px;
 }
+
 #contact .email {
-	cursor: hand;
+	cursor: pointer;
 }
 
 #contact .email:hover {
