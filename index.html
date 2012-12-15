@@ -1,67 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-        "http://www.w3.org/TR/html4/strict.dtd">
-
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Doug Taylor Decorating</title>
-        <meta name="description" content="Experienced, quality paper hanging and painting.
-            Interior, exterior, commercial and private since 1973."/>
-        <link href="index.css" type="text/css" rel="stylesheet" class="cssfx"/>
-        <script src="cssfx.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <div id="main" class="hidden">
-            <h1>Doug Taylor Decorating</h1>
-
-            <h3>Serving West Michigan since 1973</h3>
-
-            <div id="about" class="section">
-                <h2>About</h2>
-
-                <p>Who says that "watching paint dry" is not exciting? I think it is. Really! I have been painting
-                    professionally for more than forty years in homes, estates, bungalows, cottages, businesses,
-                    condos and just about every other place in West Michigan you can imagine. No job is too big...or
-                    too small.
-
-                <p>My clients will tell you that I'm prompt, careful, conscientious, detail-oriented and thorough.
-                    Whenever you need any services related to the walls of your home or business, I hope you'll get
-                    in touch with me. It would be my pleasure to help you finish, refinish or renew your space.
-            </div>
-
-            <div id="photos" class="section">
-                <h2>Photos</h2>
-
-                <div>Click for enlarged images.</div>
-            </div>
-
-            <div id="services" class="section">
-                <h2>Services</h2>
-                <ul>
-
-                    <li>painting</li>
-                    <li>wallpaper removal or application</li>
-                    <li>plaster or drywall repair</li>
-                    <li>faux finishes</li>
-                    <li>woodwork repair or refinishing</li>
-                </ul>
-
-                <p>I am a licensed and insured contractor, and I provide complimentary estimates for all work.
-            </div>
-
-            <div id="links">
-                <div class="first">&nbsp;</div>
-                <div class="about"><span>About</span></div>
-                <div class="photos"><span>Photos</span></div>
-                <div class="services"><span>Services</span></div>
-                <div class="last">&nbsp;</div>
-            </div>
-        </div>
-        <div id="mask" class="hidden"></div>
-        <div id="focused-photo" class="hidden">
-            <div id="close-button"></div>
-        </div>
-        <script src="index.js" type="text/javascript"></script>
-        <script src="photos/index.js" type="text/javascript"></script>
-    </body>
-
+	<head>
+		<title>Doug Taylor Decorating</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+		<link href="screen.css" rel="stylesheet" type="text/css" media="screen">
+	</head>
+	<body>
+		<table id="info" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="contact">
+                    <h1>Doug Taylor Decorating</h1>
+                </td>
+                <td id="services">
+                    <ul>
+                        <li>painting</li>
+                        <li>wallpaper removal or application</li>
+                        <li>plaster or drywall repair</li>
+                        <li>faux finishes</li>
+                        <li>woodwork repair or refinishing</li>
+                    </ul>
+                 </td>
+            </tr>
+		</table>
+		<a href="javascript: void(0);" id="right">&gt;</a>
+		<a href="javascript: void(0);" id="left">&lt;</a>
+		<div id="background"></div>
+		<script src="requestAnimationFrame.js"></script>
+		<script src="tween.js"></script>
+		<script src="index.js"></script>
+	</body>
 </html>
