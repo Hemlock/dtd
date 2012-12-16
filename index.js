@@ -21,16 +21,16 @@ var DTD = (function() {
 		address: [100, 111, 117, 103, 64, 100, 111, 117, 103, 116, 97, 121, 108, 111, 114, 100, 101, 99, 111, 114, 97, 116, 105, 110, 103, 46, 99, 111, 109],
 		phone: [54, 49, 54, 46, 54, 51, 52, 46, 50, 49, 54, 49],
 		images: [
+            "6827733932_4d7d6352c3_b.jpg",
+            "6827736262_be212bfa55_b.jpg",
             "6827737202_770cb00307_b.jpg",
+            "6827746536_833142052a_b.jpg",
             "6827748384_e782f1e094_b.jpg",
             "6827749728_28d4e0c9db_b.jpg",
             "6827751832_255db79cbe_b.jpg",
             "6973851597_58b29689df_b.jpg",
-            "IMG_0830.JPG",
-            "IMG_0831.JPG",
-            "IMG_0832.JPG",
-            "IMG_0835.JPG",
-            "IMG_0836.JPG"
+            "6973856625_bd0d140b2a_b.jpg",
+            "6973868333_3f4a17f4fb_b.jpg",
 		],
 		
 		on: function(target, event, handler, scope) {
@@ -50,6 +50,7 @@ var DTD = (function() {
 			DTD.setupContacts();
 			DTD.renderImages();
 			DTD.setupAnimations();
+            DTD.setupKeyboard();
 		},
 
         shuffle: function() {
@@ -76,7 +77,21 @@ var DTD = (function() {
 			phone.className = 'phone';
 			container.appendChild(phone);
 		},
-		
+
+		setupKeyboard: function() {
+            var RIGHT = 39,
+                LEFT = 37;
+            this.on(document.body, 'keyup', function(e) {
+                console.log(e.keyCode);
+                var keyCode = e.keyCode;
+                if (keyCode == RIGHT) {
+                    this.animateRight();
+                } else if (keyCode == LEFT) {
+                    this.animateLeft();
+                }
+            }, this);
+        },
+
 		renderImages: function() {
 			var container = document.getElementById('background');
 			while(container.firstChild) {
@@ -176,6 +191,7 @@ var DTD = (function() {
 					style.height = height + 'px';
 				} else {
 					style.width = width + 'px';
+                    style.top = ((height - image.offsetHeight)/2) + 'px'
 				}
 				
 				style.left = ((i-1) * width) + 'px';
