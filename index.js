@@ -82,7 +82,6 @@ var DTD = (function() {
             var RIGHT = 39,
                 LEFT = 37;
             this.on(document.body, 'keyup', function(e) {
-                console.log(e.keyCode);
                 var keyCode = e.keyCode;
                 if (keyCode == RIGHT) {
                     this.animateRight();
@@ -184,8 +183,8 @@ var DTD = (function() {
 			while (i--) {
 				var image = images[i];
 				var style = image.style;
-				style.height = '';
-				style.width = '';
+				style.height = 'auto';
+				style.width = 'auto';
 				
 				if (height/width >= image.offsetHeight/image.offsetWidth) {
 					style.height = height + 'px';
@@ -193,7 +192,7 @@ var DTD = (function() {
 					style.width = width + 'px';
                     style.top = ((height - image.offsetHeight)/2) + 'px'
 				}
-				
+
 				style.left = ((i-1) * width) + 'px';
 			}	
 		}
