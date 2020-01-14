@@ -16,19 +16,22 @@ html, body {
 }
 
 #background {
+  box-sizing: border-box;
 	height: 100%;
-	width: 100%;
+	width: 300%;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: -100%;
 	z-index: 0;
-	overflow: hidden;
+  overflow: hidden;
+  display: flex;
 }
 
-#background img {
-	position: absolute;
-	top: 0;
-	left: 0;
+#background > * {
+  box-sizing: border-box;
+  background-size: cover;
+  height: 100%;
+  width: 33.333%;
 }
 	
 #left, #right {
